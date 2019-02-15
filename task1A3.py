@@ -8,3 +8,14 @@ def Sorted_words():
             wordcount[word] = 1
         else:
             wordcount[word] += 1
+ copy = []
+ for k,v in wordcount.items():
+    copy.append((v, k))
+
+
+ copy = sorted(copy, reverse=True)
+
+ for k in copy:
+        print ('%s: %d' %(k[1], k[0]))
+
+Sorted_words()
