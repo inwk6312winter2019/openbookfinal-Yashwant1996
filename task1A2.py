@@ -1,11 +1,11 @@
 def count_the_article():
- file=open("Book1.txt","r+")
- wordcount={}
- for word in file.read().split():
-    if word not in wordcount:
-        wordcount[word] = 1
+ count = {}
+ for w in open('Book1.txt').read().split():
+    if w in count:
+        count[w] += 1
     else:
-        wordcount[word] += 1
- print (word,wordcount)
- file.close();
+        count[w] = 1
+ for word, times in count.items():
+    print ("%s :  %d times" % (word, times))
 count_the_article()
+
