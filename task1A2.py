@@ -1,11 +1,42 @@
-def count_the_article():
- count = {}
- for w in open('Book1.txt').read().split():
-    if w in count:
-        count[w] += 1
-    else:
-        count[w] = 1
- for word, times in count.items():
-    print ("%s :  %d times" % (word, times))
-count_the_article()
+import string
 
+yv=open('Book1.txt')
+file1=yv.read()
+
+def print_book(books):
+	count=0
+	mydict=dict()
+	com_dict=dict()
+	for line in books.split():
+		word=line.strip(string.punctuation)
+		myword=word.lower()
+		count=count+1
+		if myword not in mydict:
+			mydict[myword]=1
+		else:
+			mydict[myword]+=1
+
+	print(' Number  of words in the Book is:',count)
+	mylist=[]
+	for key,value in mydict.items():
+		mylist.append((value,key))
+	mylist.sort(reverse=True)
+	print("commonly used  20 words in Book are:")
+	for freq,word in mylist[:20]:
+		print(word,freq,sep='\t')
+	for char in mylist[:20]:
+		com_dict[char]=com_dict.get(char,0)+1
+	print("\nDictionery containing the most common 20 words:\n")
+	print(com_dict)
+yv1=open('Book1.txt')
+file1=yv1.read()
+yv2=open('Book2.txt')
+file2=yv2.read()
+yv3=open('Book3.txt')
+file3=yv3.read()
+print("conten in Book1")
+print_book(file1)
+print("content in Book2")
+print_book(file2)
+print("content in Book3")
+print_book(file3)

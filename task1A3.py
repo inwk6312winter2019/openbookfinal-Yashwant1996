@@ -1,21 +1,17 @@
-def Sorted_words():
- file=open("Book1.txt","r+")
- wordcount={}
- for word in file.read().split():
-    word = word.lower()
-    if word.isalpha == True:
-        if word not in wordcount:
-            wordcount[word] = 1
-        else:
-            wordcount[word] += 1
- copy = []
- for k,v in wordcount.items():
-    copy.append((v, k))
+# A list containing the words in th book in descending order based on character count.
+task = open("Book1.txt",'r')
+task = task.readlines()
 
 
- copy = sorted(copy, reverse=True)
+def sorted_words(task):
+  result=[]
+  list2=[]
+  for line in task:
+    line=line.strip()
+    line=line.split()
+    for word in line:
+      if word not in result:
+        result.append(word)
+  print(sorted(result[::-1], key = len))
 
- for k in copy:
-        print ('%s: %d' %(k[1], k[0]))
-
-Sorted_words()
+sorted_words(task)
